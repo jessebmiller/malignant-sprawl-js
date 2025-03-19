@@ -1,0 +1,92 @@
+classDiagram
+    class GameController {
+        -World world
+        -CommandProcessor commandProcessor
+        -UIManager uiManager
+        +processCommand(String command)
+        +update()
+        +render()
+    }
+    
+    class World {
+        -List~Entity~ entities
+        -TerrainManager terrain
+        -ResourceManager resources
+        -Vector3 gravity
+        -AtmosphericConditions atmosphere
+        +getEntitiesInRadius(Vector3 position, float radius)
+        +addEntity(Entity entity)
+        +removeEntity(Entity entity)
+        +updatePhysics()
+    }
+    
+    class TerrainManager {
+        -Triangle[] triangles
+        -Material[] materials
+        +getTriangleAt(Vector3 position)
+        +getVisibleTriangles(Vector3 position, float viewDistance)
+        +getMaterialAt(Vector3 position)
+    }
+
+    class ResourceManager {
+        -Map~ResourceType, Float~ resourceDeposits
+        +getResourcesAt(Vector3 position)
+        +extractResource(ResourceType type, Vector3 position, float amount)
+    }
+    
+    class Robot {
+        -Vector3 position
+        -List~Component~ components
+        -ProgramMemory memory
+        -Processor processor
+        -Energy energy
+        +executeProgram()
+        +upgrade(ComponentType type)
+        +sendSensorData()
+        +move(Vector3 direction)
+    }
+    
+    class Sensor {
+        -SensorType type
+        -float range
+        -float precision
+        -float powerConsumption
+        +getSensorReading(World world)
+        +upgrade(float newRange, float newPrecision)
+    }
+    
+    class Processor {
+        -int instructionsPerSecond
+        -int memorySize
+        -float powerConsumption
+        +executeInstruction(Instruction instruction)
+        +upgrade(int newIPS, int newMemory)
+    }
+    
+    class CommandProcessor {
+        -Map~String, Command~ commandRegistry
+        -ProgramInterpreter interpreter
+        +registerCommand(String name, Command command)
+        +parseCommand(String input)
+        +executeCommand(Command command)
+        +compileProgram(String sourceCode)
+    }
+    
+    class UIManager {
+        -SensorDisplay sensorDisplay
+        -CommandTerminal terminal
+        -VisualizationPanel visualization
+        +updateSensorDisplay(Map~SensorType, String~ readings)
+        +updateVisualization(Triangle[] visibleTriangles)
+        +displayMessage(String message)
+    }
+    
+    GameController --> World
+    GameController --> CommandProcessor
+    GameController --> UIManager
+    World --> TerrainManager
+    World --> ResourceManager
+    World --> Robot
+    Robot --> Sensor
+    Robot --> Processor
+    CommandProcessor --> Robot
