@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seed Robot - Planetary Cleanup</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="main-container">
+    <div class="visualization-panel">
+      <div class="triangle"></div>
+    </div>
+    
+    <div class="status-panel">
+      <div class="system-status">
+        <div>
+          <span class="status-indicator status-online"></span>
+          SEED-01 ONLINE
+        </div>
+        <div>SOL: 001</div>
+        <div>MTC: 14:32</div>
+      </div>
+      
+      <div class="sensor-readout" id="sensor-readout">
+        <div class="sensor-value">
+          <div class="sensor-label">TEMPERATURE</div>
+          <div class="sensor-data">-82.4°C</div>
+        </div>
+        
+        <div class="sensor-value">
+          <div class="sensor-label">ATMOSPHERIC PRESSURE</div>
+          <div class="sensor-data">6.8 mbar</div>
+        </div>
+        
+        <div class="sensor-value">
+          <div class="sensor-label">WIND SPEED</div>
+          <div class="sensor-data">12.3 m/s</div>
+        </div>
+        
+        <div class="sensor-value">
+          <div class="sensor-label">RADIATION LEVEL</div>
+          <div class="sensor-data">0.64 mSv/h</div>
+        </div>
+        
+        <div class="sensor-value">
+          <div class="sensor-label">ATMOSPHERIC COMPOSITION</div>
+          <div class="sensor-data">CO2: 95.1%</div>
+          <div class="sensor-data">N: 2.6%</div>
+          <div class="sensor-data">Ar: 1.9%</div>
+          <div class="sensor-data">O2: 0.13%</div>
+        </div>
+        
+        <div class="sensor-value">
+          <div class="sensor-label">SOIL COMPOSITION</div>
+          <div class="sensor-data">SiO2: 43.2%</div>
+          <div class="sensor-data">Fe2O3: 18.4%</div>
+          <div class="sensor-data">SO3: 7.2%</div>
+          <div class="sensor-data">Al2O3: 7.3%</div>
+        </div>
+        
+        <div class="sensor-value">
+          <div class="sensor-label">POWER LEVEL</div>
+          <div class="sensor-data">87%</div>
+        </div>
+      </div>
+      
+      <div class="command-terminal">
+        <div class="terminal-history" id="terminal-history">
+          > system boot
+          SEED-01 system initialized
+          Running diagnostics...
+          All systems nominal
+          Awaiting instructions
+        </div>
+        <div class="command-input">
+          <span class="terminal-prompt">></span>
+          <input type="text" class="terminal-input" id="terminal-input" placeholder="Enter command...">
+          <span class="terminal-prompt blink">_</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/CommandProcessor.js"></script>
+  <script src="js/UIManager.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
